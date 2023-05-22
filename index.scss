@@ -1,0 +1,211 @@
+$windows-blue: #0078D7;
+$windows-green: #00BC0C;
+$windows-red: #FF0000;
+$windows-light-blue: #00BCF2;
+$application-border: 3px;
+$rounded-border: 8px;
+$taskbar-height: 50px;
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+canvas {
+  display: block;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+#desktop {
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: orange;
+}
+
+#application {
+  flex-grow: 1;
+  border: solid $application-border $windows-blue;
+  border-radius: $rounded-border $rounded-border calc($rounded-border / 2) calc($rounded-border / 2);
+
+  #header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    width: calc(100% - 30px);
+    height: 35px;
+    padding: 0 15px;
+
+    font-size: calc(35px / 1.5);
+    text-shadow: 2px 2px #555;
+    color: white;
+
+    background: linear-gradient(darken($windows-blue, 5%), lighten($windows-blue, 10%));
+    border-radius: calc($rounded-border - $application-border) calc($rounded-border - $application-border) 0 0;
+
+    span {
+      margin-top: -5px;
+    }
+
+    #buttons {
+      margin-top: -7px;
+
+      button {
+        width: 30px;
+        height: 30px;
+
+        border-radius: 3px;
+        border: solid 1px #fffa;
+
+        font-size: 18px;
+        color: white;
+        cursor: pointer;
+
+        background: linear-gradient(darken($windows-blue, 10%), $windows-blue);
+
+        &:hover {
+          background: linear-gradient($windows-blue, lighten($windows-blue, 10%));
+        }
+
+        &.red {
+          background: linear-gradient(darken($windows-red, 10%), $windows-red);
+
+          &:hover {
+            background: linear-gradient($windows-red, lighten($windows-red, 10%));
+          }
+        }
+      }
+    }
+  }
+
+  #content {
+    width: 100%;
+    height: calc(100% - 35px);
+
+    background-color: white;
+  }
+}
+
+#taskbar {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  width: 100%;
+  height: $taskbar-height;
+
+  background: linear-gradient(darken($windows-blue, 10%), $windows-blue);
+
+  #start {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    width: 170px;
+    height: 100%;
+    padding: 0 15px;
+
+    font-size: calc($taskbar-height / 1.5);
+    color: white;
+    text-shadow: 2px 2px #555;
+
+    background: linear-gradient(darken($windows-green, 20%), $windows-green);
+    border-radius: 0 calc($taskbar-height / 2) calc($taskbar-height / 2) 0;
+
+    box-shadow: 1px 1px 5px 1px #333;
+
+    cursor: pointer;
+
+    span {
+      margin-top: -5px;
+      font-weight: 600;
+    }
+
+    &:hover {
+      background: linear-gradient(darken($windows-green, 25%), darken($windows-green, 5%));
+    }
+  }
+
+  #apps {
+    display: flex;
+    align-items: center;
+
+    .app {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      height: 80%;
+      padding: 0 15px;
+      min-width: 200px;
+
+      font-size: 20px;
+      color: white;
+      text-shadow: 1px 1px #555;
+
+      background: linear-gradient(darken($windows-light-blue, 5%), $windows-light-blue, darken($windows-light-blue, 5%));
+      border-radius: 5px;
+
+      cursor: pointer;
+
+      span {
+        margin-top: -5px;
+      }
+
+      &:hover {
+        background: linear-gradient(darken($windows-light-blue, 10%), $windows-light-blue, darken($windows-light-blue, 10%));
+      }
+    }
+  }
+
+  #settings {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    height: 100%;
+    padding: 0 25px;
+
+    font-size: 20px;
+    color: white;
+
+    background: linear-gradient(darken($windows-light-blue, 10%), $windows-light-blue);
+
+    i {
+      cursor: pointer;
+
+      text-shadow: 2px 2px #555;
+
+      &:hover {
+        color: #eee;
+      }
+    }
+  }
+}
+
+#options {
+  display: none;
+  position: absolute;
+
+  bottom: 50px;
+  right: 0;
+
+  width: 250px;
+  padding: 15px;
+
+  border: solid 3px $windows-blue;
+  background-color: lighten($windows-light-blue, 40%);
+
+  .option {
+    color: black !important;
+  }
+}

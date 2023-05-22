@@ -1,0 +1,17 @@
+{
+  "name": "canvas-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.62.1",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.8"
+  }
+}
