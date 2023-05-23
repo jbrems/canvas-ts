@@ -43,8 +43,12 @@
         <i id="options-toggle" class="fa-solid fa-cog"></i>
         <span id="time"></span>
       </div>
-      <div id="options">
-        Options here
+      <div id="options-container">
+        <span class="options-title">
+          <span>Options</span>
+          <i class="fa-solid fa-angle-down" onclick="document.getElementById('options-container').style.display = 'none';"></i>
+        </span>
+        <div id="options"></div>
       </div>
     </div>
   </div>
@@ -59,7 +63,6 @@
   <script type="module" src="demo/spinner.ts"></script>
 
   <script type="module">
-    var showOptions = false;
     var pause = false;
 
     function renderOptions () {
@@ -71,7 +74,7 @@
         div.innerHTML = `
             <span>${option.name}</span>
             <input type="range" min="${option.min}" max="${option.max}" value="${option.value}" step="${option.step}" />
-            <span id="${option.name}-value">${option.value}</span>
+            <span id="${option.name}-value" class="value">${option.value}</span>
           `;
         document.getElementById('options').appendChild(div);
 
@@ -84,13 +87,11 @@
     }
 
     document.getElementById('options-toggle').addEventListener('click', () => {
-      showOptions = !showOptions;
-      document.getElementById('options').style.display = showOptions ? 'block' : 'none';
-
-      if (showOptions) {
-        renderOptions();
-      }
+      const container = document.getElementById('options-container');
+      container.style.display = container.style.display === 'block' ? 'none' : 'block';
     });
+
+    renderOptions();
 
     document.getElementById('pause-toggle').addEventListener('click', () => {
       pause = !pause;
