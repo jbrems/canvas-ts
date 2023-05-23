@@ -61,6 +61,7 @@ export class Canvas {
   }
 
   private draw() {
+    this.context.reset();
     this.context.clearRect(0, 0, this.width, this.height);
     this._onDraw(this.context);
   }
